@@ -1,7 +1,15 @@
 ---
 
+#
+# bootstrap python3.11
+#
+
 - name: 'Run playbook-all_nodes-bootstrap_python.yml'
   ansible.builtin.import_playbook: playbook-all_nodes-bootstrap_python.yml
+
+#
+# general configuration
+#
 
 - name: 'Run playbook-all_nodes-create_a_vimrc.yml'
   ansible.builtin.import_playbook: playbook-all_nodes-create_a_vimrc.yml
@@ -14,3 +22,10 @@
 
 - name: 'Run playbook-all_nodes-minimal_bashrc.yml'
   ansible.builtin.import_playbook: playbook-all_nodes-minimal_bashrc.yml
+
+#
+# Unbound
+#
+
+- name: 'Run playbook-all_nodes-install_unbound.yml'
+  ansible.builtin.import_playbook: playbook-all_nodes-install_unbound.yml
