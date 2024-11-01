@@ -1,0 +1,27 @@
+---
+- name: 'Configure and start unbound'
+  hosts: 'all'
+  gather_facts: true
+  become: true
+
+  handlers:
+
+    - name: 'Restart the unbound service'
+      ansible.builtin.service:
+        name: 'unbound'
+        state: 'restarted'
+      when:
+        - 'not unbound_service_started.changed | bool'
+
+  tasks:
+
+    - name: 'Start the unbound service'
+      ansible.builtin.service:
+        name: 'unbound'
+        state: 'started'
+      register: unbound_service_started
+
+    - name: 'Enable the unbound service'
+      ansible.builtin.service:
+        name: 'unbound'
+        enabled: true
