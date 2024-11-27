@@ -15,6 +15,16 @@
 
   tasks:
 
+    - name: 'Create the unbound control key'
+      ansible.builtin.command:
+        cmd: '/usr/sbin/unbound-control-setup -d /etc/unbound/'
+        creates: '/etc/unbound/unbound_control.key'
+
+    - name: 'Start the unbound-anchor service'
+      ansible.builtin.service:
+        name: 'unbound-anchor.service'
+        state: 'started'
+
     - name: 'Start the unbound service'
       ansible.builtin.service:
         name: 'unbound'
