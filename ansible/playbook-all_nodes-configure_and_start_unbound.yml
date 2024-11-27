@@ -20,6 +20,11 @@
         cmd: '/usr/sbin/unbound-control-setup -d /etc/unbound/'
         creates: '/etc/unbound/unbound_control.key'
 
+    - name: 'Fetch the root anchor key manually'
+      ansible.builtin.command:
+        cmd: '/usr/sbin/unbound-anchor -a /var/lib/unbound/root.key -c /etc/unbound/icannbundle.pem'
+        creates: '/var/lib/unbound/root.key'
+
     - name: 'Start the unbound-anchor service'
       ansible.builtin.service:
         name: 'unbound-anchor.service'
