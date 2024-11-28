@@ -32,3 +32,6 @@
 
 - name: 'Run playbook-all_nodes-configure_and_start_unbound.yml'
   ansible.builtin.import_playbook: playbook-all_nodes-configure_and_start_unbound.yml
+
+- name: 'Run playbook-all_nodes-install_git-core.yml'
+  ansible.builtin.import_playbook: playbook-all_nodes-install_git-core.yml
