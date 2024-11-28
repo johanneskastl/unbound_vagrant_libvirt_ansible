@@ -1,0 +1,13 @@
+---
+- name: 'Install git-core'
+  hosts: 'all'
+  gather_facts: true
+  become: true
+
+  tasks:
+
+    - name: 'Install git-core'
+      ansible.builtin.package:
+        name: 'git-core'
+        state: 'present'
+        update_cache: true
